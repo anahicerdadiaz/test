@@ -16,10 +16,18 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {   
+        $this->middleware(['auth','rol.admin']);
+        //$this->middleware('auth')->only('index');
+       // $this->middleware('auth')->except('index','create');
+    }
+
     public function index()
     {
         //$posts = Post::get();
-        $posts = Post::orderBy('created_at','desc')->paginate();
+        $posts = Post::orderBy('created_at','desc')->paginate(10);
        // dd($posts);
         
        return view('dashboard.post.index',['posts' => $posts]);

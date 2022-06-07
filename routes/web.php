@@ -20,14 +20,11 @@ Route::get('/', function () {
     return view('welcome'); 
 })->name('home');
 
+
 Route::resource('dashboard/post', PostController::class);
 Route::post('dashboard/post/{post}/image', [PostController::class,'image'])->name('post.image');
 //Route::post('dashboard/post/{post}/image', PostController::class);
 Route::resource('dashboard/category', CategoryController::class);
-
-
-
-
 
 /*Route::get('/test', function () {
     return "Hola mundo";
@@ -51,3 +48,7 @@ Route::get('home/{nombre?}/{apellido?}', function ($nombre = "Erik", $apellido =
 
 //Route::get('post',[PostController::class,'index']); /* Es otra manera de utilizar el PostController */
 //Route::get('post',[App\Http\Controllers\PostController::class,'index']); /* Esta es otra manera de utilizar el PostController */
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -9,11 +9,17 @@ use App\Http\Requests\StoreCategoryPost;
 
 class CategoryController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
          //$categories = Category::get();
@@ -30,6 +36,7 @@ class CategoryController extends Controller
     public function create()
     {
         return view('dashboard.category.create',['category'=> new Category()]);
+        //return view('dashboard.category.create',compact('category')); -- versión 9 de laravel
     }
 
     /**
@@ -42,7 +49,8 @@ class CategoryController extends Controller
     {
         Category::create($request->validated());
         //echo "Hola mundo:" .$request->title;
-        return back()->with('status', 'Categoria creada con exito');
+        return back()->with('status', 'Categoria creada con exito');  
+      //  return to_route("category.index")->with('status',"Registro creado ") -- versión 9 de laravel     
     }
 
     /**
@@ -65,6 +73,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         return view('dashboard.category.edit',['category'=> $category]);
+        //echo view('dashboard.category.edit',compact('category')); -- versión 9 de laravel
     }
 
     /**
