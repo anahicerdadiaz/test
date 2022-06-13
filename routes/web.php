@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome'); 
 })->name('home');
 
+/*Route::get('/', function () {
+    return view('home'); 
+});*/
+
 
 Route::resource('dashboard/post', PostController::class);
 Route::post('dashboard/post/{post}/image', [PostController::class,'image'])->name('post.image');

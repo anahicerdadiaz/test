@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "@ckeditor/ckeditor5-build-classic": "^31.1.0"
+        "@ckeditor/ckeditor5-build-classic": "^31.1.0",
+        "bootstrap-icons": "^1.8.3"
     }
 }

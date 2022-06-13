@@ -19,14 +19,16 @@
         <div class="from-group">
             <label for="url_clean">Categorías</label>
            <select class="form-select" name="category_id" id="category_id">
-               @foreach ($categories as $title => $id)
-                   <option  {{ $post->category_id == $id ? 'selected="selected"': '' }} value="{{ $id }}">{{ $title }}</option>
+            <!--Sigo trabajando en este codigo-->  
+            @foreach ($categories as $title =>$id)
+                   <!--option  {{-- $post->category_id ? 'selected="selected"': '' --}} value="{{-- $id }}">{{ $title --}}</option-->
+                   <option value="{{ $id }}">{{ $title }}</option>
                @endforeach
            </select>           
         </div>
 
         <div class="from-group">
-            <label for="url_clean">Posted</label>
+            <label for="url_clean">Posteado</label>
            <select class="form-select" name="posted" id="posted">
             @include('dashboard.partials.option-yes-not', ['val'=> $post->posted])
            </select>           

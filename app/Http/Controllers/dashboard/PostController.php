@@ -19,7 +19,8 @@ class PostController extends Controller
 
     public function __construct()
     {   
-        $this->middleware(['auth','rol.admin']);
+        $this->middleware('auth');
+        ////$this->middleware(['auth','rol.admin']);
         //$this->middleware('auth')->only('index');
        // $this->middleware('auth')->except('index','create');
     }
@@ -27,10 +28,11 @@ class PostController extends Controller
     public function index()
     {
         //$posts = Post::get();
-        $posts = Post::orderBy('created_at','desc')->paginate(10);
-       // dd($posts);
-        
-       return view('dashboard.post.index',['posts' => $posts]);
+        $posts = Post::orderBy('created_at','asc')->paginate();
+        $categories = Category::pluck('id','title');
+       
+       // dd($posts);        
+       return view('dashboard.post.index',['posts' => $posts,'categories' => $categories]);
     }
 
     /**
@@ -42,7 +44,8 @@ class PostController extends Controller
     {
 
         $categories = Category::pluck('id','title');
-        return view('dashboard.post.create',['post'=> new Post(), 'categories' => $categories ]);
+        return view('dashboard.post.create',['post'=> new Post(), 'categories' => $categories]);
+        //dd($categories);
     }
 
     /**
@@ -52,7 +55,12 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StorePostPost $request)
-    {
+    {        
+        Post::create($request->validated());
+        //echo "Hola mundo:" .$request->title;
+
+        return back()->with('status', 'Post creado con exito');
+
         //echo "Hola mundo:" .$request->input('title');
         //echo "Hola mundo:" .$request->all();
         //dd($request);
@@ -66,12 +74,7 @@ class PostController extends Controller
             'content' => 'required|min:5'
         ]);*/
     
-        echo "Hola mundo:" .$request->content;
-        
-        Post::create($request->validated());
-
-        //echo "Hola mundo:" .$request->title;
-        return back()->with('status', 'Post creado con exito');
+        //echo "Hola mundo:" .$request->content;
           
     }
 

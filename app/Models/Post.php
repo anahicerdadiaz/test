@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'url_clean', 'content', 'category_id', 'posted'];
+    protected $fillable = ['id','title','url_clean','content','posted','category_id'];
+    //protected $fillable = ['title','url_clean','content', 'category_id', 'posted'];
 
     public function category(){
         return $this->belongsTo(Category::class);

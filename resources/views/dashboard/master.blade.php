@@ -15,7 +15,9 @@
        
     <div class="container">            
         @include('dashboard.partials.session-flash-status')
+
         @yield('content')
+        
     </div>
     <script src="{{asset("js/app.js")}}"></script>}
 </body>

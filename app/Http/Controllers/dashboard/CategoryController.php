@@ -23,7 +23,7 @@ class CategoryController extends Controller
     public function index()
     {
          //$categories = Category::get();
-         $categories = Category::orderBy('created_at','desc')->paginate();
+         $categories = Category::orderBy('created_at','asc')->paginate();
          // dd($categories);          
          return view('dashboard.category.index',['categories' => $categories]);
     }
