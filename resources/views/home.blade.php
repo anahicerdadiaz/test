@@ -1,4 +1,5 @@
-@extends('layouts.app')
+{{--@extends('layouts.app')--}}
+@extends('dashboard.master')
 
 @section('content')
 <div class="container">
@@ -16,7 +17,8 @@
 
          {{ auth()->user()->rol }}
 
-                    {{ __('Bienvenido!') }}
+                    {{ __('Bienvenido!') }}                  
+                    
                 </div>
             </div>
         </div>

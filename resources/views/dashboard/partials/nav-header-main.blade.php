@@ -18,28 +18,25 @@
         </li>    
       </ul>   
 
-      <ul class="navbar-nav mb-2 mb-lg-0">      
-      
-        <li>    
-          <a class="nav-link" href="{{ route('logout') }}"
-          onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-           {{ __('Logout') }}
-       </a>
-
-       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-           @csrf
-       </form>
-
-        </li>
- 
+      <ul class="navbar-nav mb-2 mb-lg-0">                     
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Perfil
+              {{ Auth::user()->name }}  {{Auth::user()->surname}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Perfil</a></li>             
-              <li><hr class="dropdown-divider"></li>              
+              <li><hr class="dropdown-divider"></li>
+              <li>    
+                <a class="nav-link" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                 {{ __('Cerrar sesión') }}
+             </a>
+      
+             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                 @csrf
+             </form>
+              </li>              
             </ul>
           </li>     
 
